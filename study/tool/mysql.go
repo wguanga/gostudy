@@ -79,3 +79,30 @@ func Mysqlstudy() {
 	//删表
 	db.DropTable("user")
 }
+
+type Table_a struct {
+	ID       int `gorm:"PRIMARY KEY"`
+	A_value1 int
+	A_value2 string
+	A_value3 int
+}
+
+type Table_b struct {
+	ID        int `gorm:"PRIMARY KEY"`
+	B_value1  int
+	B_value2  string
+	B_value3  int
+	Table_aID int
+	Table_a   Table_a
+}
+
+func Dbrelationshiptest() {
+	dsn := "root:852456@tcp(localhost:3306)/test?charset=utf8mb4&parseTime=True&loc=Local"
+	db, linkerr := gorm.Open("mysql", dsn)
+	defer db.Close()
+	if linkerr != nil {
+		panic(linkerr)
+	}
+
+	fmt.Printf("db.AutoMigrate(&table_a, &table_b).Error: %v\n", db.AutoMigrate(&Table_a{}, &Table_b{}).Error)
+}
