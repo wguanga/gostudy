@@ -1191,7 +1191,7 @@ strings.Index(sl1, "oo"): -1
 >	   Name string
 >	   Age int
 >	   Addr string
->   }
+>}
 >//
 >db.CreateTable(&User{})
 >//auto建表
@@ -1202,12 +1202,18 @@ strings.Index(sl1, "oo"): -1
 >//可以一次建多个  db.AutoMigrate(&User{},&Stu{},&Tea{})
 >```
 >
+>使用AutoMigrate建表的时候，结构体中的字段名一定要 
+>
+> **大写！！大写啊！！！**
+>
+>
+>
 >定义表名
 >
 >```go
 >//通过实现接口定义表名
 >func (u *User) TableName() string{
->	return "userss"+table
+>	return "User"
 >}
 >
 >//建表时定义表名
@@ -1240,7 +1246,7 @@ strings.Index(sl1, "oo"): -1
 >var user User
 >db.First(&user,1)
 >// 删除数据
->db.Delete(&user
+>db.Delete(&user)
 >          
 >//或者
 >user := &User{ID:1}
@@ -1294,7 +1300,7 @@ strings.Index(sl1, "oo"): -1
 >
 >
 >```go
->db.Raw("select id,name,age from users where name=？","aaa")
+>db.Raw("select id,name,age from users where name=？","aaa").scan(&user)
 >```
 >
 >
