@@ -67,4 +67,35 @@ func main() {
 	} */
 
 	//tool.Dbrelationshiptest()
+
+	/* //二叉树操作
+	bt := new(algorithm.Btree)
+	arry := make([]int, 0)
+	arry = append(arry, 5, 2, 1, 6, 3)
+	for _, v := range arry {
+		bt.Breeinsert(v)
+	}
+	arry_2 := make([]int, 0)
+	arry_2 = append(arry_2, 1, 3, 2, 6, 5)
+	//var arry_3 []int
+	//p_arr := &arry_3
+	//algorithm.Postorder_traversal(bt.Root, p_arr)
+	//fmt.Printf("p_arr: %v\n", p_arr)
+
+	fmt.Printf("arry_2: %v\n", arry_2)
+
+	fmt.Printf("algorithm.Jugselbtree(bt.Root, arry_2): %v\n", algorithm.Jugselbtree(bt.Root, arry_2))
+	fmt.Printf("bt: %v\n", bt.Root) */
+
+	/* //快排
+	arry := []int{5, 6, 8, 2, 4, 9, 3}
+	algorithm.Kuaipai(arry, 0, len(arry)-1)
+	fmt.Printf("arry: %v\n", arry) */
+
+	arry_1 := new([]int)
+	arry_2 := make([]int, 0)
+	arry_3 := []int{}
+	fmt.Printf("arry_1: %T\n", arry_1)
+	fmt.Printf("arry_2: %T\n", arry_2)
+	fmt.Printf("arry_3: %T\n", arry_3)
 }
