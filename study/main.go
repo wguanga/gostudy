@@ -92,10 +92,36 @@ func main() {
 	algorithm.Kuaipai(arry, 0, len(arry)-1)
 	fmt.Printf("arry: %v\n", arry) */
 
+	/* //切片测试
 	arry_1 := new([]int)
 	arry_2 := make([]int, 0)
 	arry_3 := []int{}
 	fmt.Printf("arry_1: %T\n", arry_1)
 	fmt.Printf("arry_2: %T\n", arry_2)
-	fmt.Printf("arry_3: %T\n", arry_3)
+	fmt.Printf("arry_3: %T\n", arry_3) */
+
+	/* //归并排序
+	arry := []int{5, 6, 8, 2, 4, 9, 3}
+	algorithm.Guibing(arry)
+	fmt.Printf("arry: %v\n", arry) */
+
+	/* //层次添加先序遍历
+	arry_btree := []int{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 5, 1}
+	bt := algorithm.Constructorforarry(arry_btree)
+	arry_traversal := &[]int{}
+	bt.Preorder_traversal(arry_traversal)
+	fmt.Printf("arry_traversal: %v\n", *arry_traversal) */
+
+	/* //切片与数组的地址测试
+	a := [5]int{1, 2, 3, 4, 5}
+	b := a[:4]
+	fmt.Printf("a: %v\n", a)
+	fmt.Printf("b: %v\n", b)
+	b = append(b, 44)
+	fmt.Printf("b: %v\n", b)
+	fmt.Printf("a: %v\n", a)
+	fmt.Printf("a[3].p: %p   a[3].p: %p\n", &a[3], &b[3])
+	fmt.Printf("a[4]: %v    b[4]: %v\n", a[4], b[4])
+	fmt.Printf("a[4].p: %p   b[4].p: %p\n", &a[4], &b[4]) */
+
 }

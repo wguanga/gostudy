@@ -28,10 +28,47 @@ func Kuaipai(arry []int, left int, right int) {
 	}
 }
 
-func Guibing(arry []int) func([]int) {
-	return division(arry)
+func Guibing(arry []int) {
+	division(arry, 0, len(arry)-1)
 }
 
-func division(arry []int) {
+func division(arry []int, left int, right int) {
+	if right <= left {
+		return
+	} else {
+		division(arry, left, (right+left)/2)
+		division(arry, (left+right)/2+1, right)
+		merge(arry, left, right)
+	}
+}
 
+func merge(arry []int, left int, right int) {
+	mid := (left+right)/2 + 1
+	cop := []int{}
+	i, j := left, mid
+	for i < mid && j <= right {
+		if arry[i] <= arry[j] {
+			cop = append(cop, arry[i])
+			i++
+		} else {
+			cop = append(cop, arry[j])
+			j++
+		}
+	}
+	if i >= mid {
+		for j <= right {
+			cop = append(cop, arry[j])
+			j++
+		}
+	} else if j > right {
+		for i < mid {
+			cop = append(cop, arry[i])
+			i++
+		}
+	}
+	k := left
+	for _, v := range cop {
+		arry[k] = v
+		k++
+	}
 }

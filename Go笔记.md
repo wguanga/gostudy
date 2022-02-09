@@ -1388,6 +1388,8 @@ a[0].p: 0xc0000140b0
 
 ### 关于切片
 
+#### 测试切片定义方法
+
 ```go
 	arry_1 := new([]int)
 	arry_2 := make([]int, 0)
@@ -1404,3 +1406,46 @@ arry_1: *[]int
 arry_2: []int
 arry_3: []int
 ```
+
+#### 测试切片与数组地址
+
+>
+>
+>```go
+>	a := [5]int{1, 2, 3, 4, 5}
+>	b := a[:4]
+>	fmt.Printf("a: %v\n", a)
+>	fmt.Printf("b: %v\n", b)
+>	b = append(b, 44)
+>	fmt.Printf("b: %v\n", b)
+>	fmt.Printf("a: %v\n", a)
+>	fmt.Printf("a[3].p: %p   a[3].p: %p\n", &a[3], &b[3])
+>	fmt.Printf("a[4]: %v    b[4]: %v\n", a[4], b[4])
+>	fmt.Printf("a[4].p: %p   b[4].p: %p\n", &a[4], &b[4])
+>```
+>
+>输出结果：
+>
+>```go
+>a: [1 2 3 4 5]
+>b: [1 2 3 4]
+>b: [1 2 3 4 44]
+>a: [1 2 3 4 44]
+>a[3].p: 0xc00000a498   a[3].p: 0xc00000a498
+>a[4]: 44    b[4]: 44
+>a[4].p: 0xc00000a4a0   b[4].p: 0xc00000a4a0
+>```
+>
+>结论：用数组创建的切片，是完全使用数组的地址和空间，切片改变，数组也会改变，数组改变，切片也会改变
+
+
+
+### go的数据结构与C++STL的数据结构
+
+>
+>
+>slice：：vector
+>
+>map：：unordered_map
+>
+>list：：list
